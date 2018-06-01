@@ -1,5 +1,6 @@
 import urllib.request
 import requests
+import json
 from datetime import datetime
 from datetime import timedelta
 from bs4 import BeautifulSoup
@@ -93,8 +94,16 @@ for titles in table.find_all('div', attrs={'class':'vevent'}):
 	except Exception as e:
 		event_contact = None
 		
-	print(event_contact)
-	print()
+	try:
+	#eventType
+		event_type = text[text.index("Event Type") + len("Event Type"): text.index("Select item(s)")]
+		event_type = event_type.strip()
+	except Exception as e:
+		event_type = None
+		
+	#print(event_type)
+
+		
 
 			
 	
